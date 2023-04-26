@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="img/rolex.png" type="image/x-icon">
+<link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" th:href="@{/resources/css/style.css}">
+<title th:text="${titlePage}"></title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div><a th:href="@{/app/home}">
+				<img src="https://mmwatches.dk/wp-content/uploads/2018/08/Rolex-Logo-white-shadow.png" class="logo">
+
+			</a>
+               
+            </div>
+            <input type="checkbox" id="check">
+            <label for="check" class="bar-btn">
+                <i class="bi bi-list"></i>
+            </label>
+            <ul class="nav-menu">
+                <li><a class="active" th:href="@{/app/home}">Inicio</a></li>
+                <li><a href="#">Novedades</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Iniciar Sesión</a></li>
+                <li><a href="#"><i class="bi bi-cart-fill"></i></a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+	
+	<div class="container mt-3">
+		<div class="jumbotron">
+			<p style="text-align: center"> * Antes de iniciar el registro de tu reclamo, toma en cuenta que una vez enviado el reclamo se validara si usted realmente es cliente de nuestra tienda, luego se
+            procedera a verificar dicho reclamo, la respuesta se dara lo mas pronto posible.</p>
+			<hr>
+			<div class="card p-4"
+				style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+
+
+				<form th:action="@{/app/Nuevoform}" th:object="${reclamos}"
+					method="post">
+					
+					<div class="form-group">
+						<label for="nomClie">Nombre</label> <input type="text"
+							name="nomClie" th:field="*{nomClie}" class="form-control"
+							id="nomClie">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('nomClie')}" th:errors="*{nomClie}"></span>
+					
+					<div class="form-group">
+						<label for="apeClie">Apellido</label> <input type="text"
+							name="apeClie" th:field="*{apeClie}" class="form-control"
+							id="apeClie">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('apeClie')}" th:errors="*{apeClie}"></span>
+					
+					<div class="form-group">
+						<label for="email">Email</label> <input type="text"
+							name="email" th:field="*{email}" class="form-control"
+							id="email">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+					
+					<div class="form-group">
+						<label for="numCel">Numero de Celular</label> <input type="text"
+							name="numCel" th:field="*{numCel}" class="form-control"
+							id="numCel">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('numCel')}" th:errors="*{numCel}"></span>
+					
+					<div class="form-group">
+						<label for="direccion">Direccion</label> <input type="text"
+							name="direccion" th:field="*{direccion}" class="form-control"
+							id="direccion">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></span>
+					
+					<div class="form-group">
+						<label for="motReclamo">Motivo del Reclamo</label> <input type="text"
+							name="motReclamo" th:field="*{motReclamo}" class="form-control"
+							id="motReclamo">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('motReclamo')}" th:errors="*{motReclamo}"></span>
+					
+					<div class="form-group">
+						<label for="nivel">Nivel</label> <input type="text"
+							name="nivel" th:field="*{nivel}" class="form-control"
+							id="nivel">
+					</div>
+					<span class="form-text text-danger" th:if="${#fields.hasErrors('nivel')}" th:errors="*{nivel}"></span>
+
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<footer>
+        <div class="contenedor-footer">
+            <img src="https://th.bing.com/th/id/R.af2d76d48b24a94a95e1680f3c6167b2?rik=2ECx9Sp1VXFXqg&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f4%2fRolex-Logo-PNG-Picture.png&ehk=PnXxY6wHWzbzi3ANwVng%2finaUFd52%2bdeyWSsNTO3DnA%3d&risl=&pid=ImgRaw&r=0" height="50px" width="72px">
+            <div class="content-foo">
+                <h4>Navegación</h4>
+                <ul>
+                    <li>Login</li>
+                    <li>Registrarse</li>
+                    <li>Carrito</li>
+                    <li>Productos</li>
+                    <li>Novedades</li>
+                </ul>
+            </div>
+            <div class="content-foo">
+                <h4>Correo</h4>
+                <p>grupo5@certus.com</p>
+            </div>
+        </div>
+        
+        <h2 class="titulo-final">&copy; Certus_DPS Design | Grupo5</h2>
+    </footer>
+
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<script src="/resources/js/jquery.slim.min.js"></script>
+	<script src="/resources/js/popper.min.js"></script>
+
+</body>
+</html>
